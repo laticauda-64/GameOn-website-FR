@@ -1,0 +1,31 @@
+{
+    "name": "openclassrooms-p4",
+    "version": "1.0.0",
+    "description": "Projet n°4 du parcours FrontEnd Developer",
+    "main": "modal.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/laticauda-64/GameOn-website-FR.git"
+    },
+    "keywords": [
+        "OpenClassRooms",
+        "Projet4"
+    ],
+    "author": "Yoann BDL",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/laticauda-64/GameOn-website-FR/issues"
+    },
+    "homepage": "https://github.com/laticauda-64/GameOn-website-FR#readme",
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "semi": false,
+        "singleQuote": true,
+        "printWidth": 250,
+        "htmlWhitespaceSensitivity": "ignore"
+    }
+}
