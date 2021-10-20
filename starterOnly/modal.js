@@ -1,12 +1,22 @@
-// DOM Elements
-const modalbg = document.querySelector('.bground'); // Fenêtre modal (y compris le background gris)
-const closeModalButton = document.querySelector('.close'); // Bouton de fermeture de la fenêtre
-const modalBtn = document.querySelectorAll('.modal-btn'); // Boutons d'inscription : 2 un en desktop et un autre en responsive mobile
-const formData = document.querySelectorAll('.formData input'); // Tous les champs du form (input, select, checkboxes)
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+/*                                                 */
+/*                  Variables                      */
+/*                                                 */
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+
+/**
+ * DOM ELEMENTS
+ */
+const modalbg = document.querySelector('.bground');
+const closeModalButton = document.querySelector('.close');
+const modalBtn = document.querySelectorAll('.modal-btn');
+const formData = document.querySelectorAll('.formData input');
 const inputsToTest = Array.from(formData).filter((e) => e.type === 'text' || e.type === 'email' || e.type === 'date' || e.type === 'number' || e.id === 'checkbox1');
 const radioInputsList = Array.from(formData).filter((e) => e.type === 'radio');
 
-// Regular Expressions
+/**
+ * Regular Expressions
+ */
 const regExpList = {
     // Valid text fiedl with 2 alphanumeric characters, non-empty
     nameField: /^\w{2,}( +\w+)*$/i,
@@ -18,33 +28,33 @@ const regExpList = {
     birthdateField: /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/,
 };
 
-// Open Responsive burger menu
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+/*                                                 */
+/*                  Functions                      */
+/*                                                 */
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+
+/**
+ * Open/Close Responsive burger menu
+ * @returns void
+ */
 function editNav() {
     const x = document.getElementById('myTopnav');
-    if (x.className === 'topnav') {
-        x.className += ' responsive';
-    } else {
-        x.className = 'topnav';
-    }
-}
-
-// Launch & close modal event
-modalBtn.forEach((btn) => btn.addEventListener('click', switchModal));
-closeModalButton.addEventListener('click', switchModal);
-
-// Launch & close modal form
-function switchModal() {
-    if (modalbg.style.display === '') {
-        modalbg.style.display = 'block';
-        return;
-    }
-    modalbg.style.display = '';
+    x.className === 'topnav' ? (x.className += ' responsive') : (x.className = 'topnav');
 }
 
 /**
- * Validate input field
+ * Launch & close the modal
+ * @returns void
+ */
+function switchModal() {
+    modalbg.style.display === '' ? (modalbg.style.display = 'block') : (modalbg.style.display = '');
+}
+
+/**
+ * Validate an input field by testing it against regexp
  * @param {HTMLInputElement} input - an input field to validate
- * @returns Boolean
+ * @returns {boolean} boolean
  */
 function validateInputField(input) {
     switch (input.id) {
@@ -66,39 +76,50 @@ function validateInputField(input) {
     }
 }
 
+/**
+ * Validate if one of the radio button is selected
+ * It test if one of the input in the given array match the condition checked === true
+ * @param {Array<HTMLInputElement>} radioInputList - An array of input elements
+ * @returns {boolean} boolean
+ */
 function validateRadioFields(radioInputList) {
     return radioInputList.some((e) => e.checked) ? removeError(radioInputList[0]) : setError(radioInputList[0], 'Vous devez choisir une option.');
 }
-
+/**
+ * Set two dataset 'error' property on given input parent node to display corresponding error message
+ * @param {HTMLInputElement} input - An input element
+ * @param {string} errorMsg - A string, the message to display
+ * @returns {false} false
+ */
 function setError(input, errorMsg) {
     input.parentNode.setAttribute('data-error', errorMsg);
     input.parentNode.setAttribute('data-error-visible', true);
     return false;
 }
-
+/**
+ * Clear the error dataset on given input parent node and return true
+ * @param {HTMLInputElement} input - An input element
+ * @returns {true} true
+ */
 function removeError(input) {
     input.parentNode.removeAttribute('data-error');
     input.parentNode.removeAttribute('data-error-visible');
     return true;
 }
 
-function validate(event) {
-    event.preventDefault();
-    inputsToTest.forEach((input) => validateInputField(input));
-    validateRadioFields(radioInputsList);
-    // if (radioInputsToTest.some((e) => e.checked) && formData.every((e) => validateInput(e))) {
-    //     console.log('je valide le formulaire');
-    //     return true;
-    // }
-    console.log('Je ne valide pas le formulaire');
-    return false;
+function validateForm(event) {
+    // event.preventDefault();
+    return inputsToTest.map((input) => validateInputField(input)).every((e) => e) && validateRadioFields(radioInputsList);
 }
 
-console.log(formData);
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+/*                                                 */
+/*              Event Listeners                    */
+/*                                                 */
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
 
-// Si un champs en erreur, doit avoir les propriétés html suivante : data-error="msg d'erreur" + data-error-visible="true"
-// Quand l'input perd le focus, lancer une fonction de validation sur le champs
-// Quand clic sur submit, valider tous les champs
-// Si aucun attribut data-error dans le form, alors on validate
-// Go fancy OOP design pattern !
-// --> https://web-crunch.com/posts/vanilla-javascript-form-validation
+/**
+ * Launch & close modal event
+ */
+modalBtn.forEach((btn) => btn.addEventListener('click', switchModal));
+closeModalButton.addEventListener('click', switchModal);
