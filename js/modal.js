@@ -114,12 +114,7 @@ function removeError(input) {
  */
 function validateForm(event) {
     event.preventDefault();
-    if (inputsToTest.map((input) => validateInputField(input)).every((e) => e) && validateRadioFields(radioInputsList)) {
-        console.log("C'est validé");
-        showSuccessModal();
-        return;
-    }
-    console.log("C'est pas validé !");
+    inputsToTest.map((input) => validateInputField(input)).every((e) => e) && validateRadioFields(radioInputsList) ? showSuccessModal() : false;
 }
 
 /**
