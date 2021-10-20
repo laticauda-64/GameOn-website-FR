@@ -110,7 +110,7 @@ function removeError(input) {
 /**
  * Validate the form before submitting it
  * @param {SubmitEvent} Submit event from the form
- * @returns {boolean} Boolean - True or false according to the form validation results
+ * @returns {boolean|void} Boolean - Void or false according to the form validation results
  */
 function validateForm(event) {
     event.preventDefault();

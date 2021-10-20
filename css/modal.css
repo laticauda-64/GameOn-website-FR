@@ -73,43 +73,6 @@ img {
     display: none;
 }
 
-@media screen and (max-width: 768px) {
-    .topnav a {
-        display: none;
-    }
-    .topnav a.icon {
-        float: right;
-        display: block;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .topnav.responsive {
-        position: relative;
-    }
-    .topnav.responsive .icon {
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-    .topnav.responsive a {
-        float: none;
-        display: block;
-        text-align: left;
-    }
-}
-
-@media screen and (max-width: 540px) {
-    .topnav a {
-        display: none;
-    }
-    .topnav a.icon {
-        float: right;
-        display: block;
-        margin-top: -15px;
-    }
-}
-
 main {
     font-size: 130%;
     font-weight: bolder;
@@ -485,6 +448,24 @@ footer {
     margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+    .topnav {
+        display: flex;
+        align-items: center;
+    }
+
+    .main-navbar {
+        float: none;
+        margin-left: auto;
+    }
+
+    /* i::before {
+        color: red;
+    } */
+
+    .header-logo img {
+        width: 103px;
+    }
+
     .hero-section {
         display: block;
         box-shadow: unset;
@@ -492,7 +473,12 @@ footer {
     .hero-content {
         background: #fff;
         color: #000;
-        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        min-width: auto;
     }
     .hero-content::after {
         content: unset;
@@ -501,12 +487,14 @@ footer {
         display: none;
     }
     .hero-headline {
-        font-size: 4.5rem;
+        font-size: 2.3rem;
+        text-align: center;
         white-space: normal;
     }
     .hero-text {
         width: unset;
-        font-size: 1.5rem;
+        font-size: 0.9rem;
+        margin-top: 30px;
     }
     .hero-img img {
         border-radius: 10px;
@@ -518,8 +506,47 @@ footer {
         padding: 12px 35px;
     }
     .copyrights {
-        margin-top: 50px;
+        margin: 0;
         text-align: center;
+        font-size: 0.8rem;
+    }
+    footer {
+        margin: 20px 0;
+    }
+}
+@media screen and (max-width: 768px) {
+    .topnav a {
+        display: none;
+    }
+    .topnav a.icon {
+        float: right;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .topnav.responsive {
+        position: relative;
+    }
+    .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .topnav a {
+        display: none;
+    }
+    .topnav a.icon {
+        float: right;
+        display: block;
     }
 }
 
