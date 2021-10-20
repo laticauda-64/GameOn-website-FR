@@ -527,3 +527,15 @@ footer {
         opacity: 1;
     }
 }
+
+/* Success dialog box */
+.success-dialog {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+}
+.success-dialog p {
+    height: 710px;
+    display: flex;
+    align-items: center;
+}

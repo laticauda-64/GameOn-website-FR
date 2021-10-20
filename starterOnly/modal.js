@@ -9,6 +9,7 @@
  */
 const modalbg = document.querySelector('.bground');
 const closeModalButton = document.querySelector('.close');
+const closeModalButtonSucessDialog = document.querySelector('.close-btn');
 const modalBtn = document.querySelectorAll('.modal-btn');
 const formData = document.querySelectorAll('.formData input');
 const inputsToTest = Array.from(formData).filter((e) => e.type === 'text' || e.type === 'email' || e.type === 'date' || e.type === 'number' || e.id === 'checkbox1');
@@ -106,10 +107,28 @@ function removeError(input) {
     input.parentNode.removeAttribute('data-error-visible');
     return true;
 }
-
+/**
+ * Validate the form before submitting it
+ * @param {SubmitEvent} Submit event from the form
+ * @returns {boolean} Boolean - True or false according to the form validation results
+ */
 function validateForm(event) {
-    // event.preventDefault();
-    return inputsToTest.map((input) => validateInputField(input)).every((e) => e) && validateRadioFields(radioInputsList);
+    event.preventDefault();
+    if (inputsToTest.map((input) => validateInputField(input)).every((e) => e) && validateRadioFields(radioInputsList)) {
+        console.log("C'est validé");
+        showSuccessModal();
+        return;
+    }
+    console.log("C'est pas validé !");
+}
+
+/**
+ * Show submit success
+ * @returns {void}
+ */
+function showSuccessModal() {
+    document.querySelector('.register').style.display = 'none';
+    document.querySelector('.success-dialog').style.display = 'flex';
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * */
@@ -122,4 +141,15 @@ function validateForm(event) {
  * Launch & close modal event
  */
 modalBtn.forEach((btn) => btn.addEventListener('click', switchModal));
+modalBtn.forEach((btn) => btn.addEventListener('click', switchModal));
 closeModalButton.addEventListener('click', switchModal);
+closeModalButtonSucessDialog.addEventListener('click', switchModal);
+
+/**
+ * Validate input fields when they loose focus
+ */
+inputsToTest.forEach((input) =>
+    input.addEventListener('blur', function () {
+        validateInputField(this);
+    })
+);

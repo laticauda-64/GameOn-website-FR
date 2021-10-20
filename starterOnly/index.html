@@ -58,6 +58,7 @@
           <div class="modal-body">
             <form
               name="reserve"
+              class="register"
               action="index.html"
               method="get"
               onsubmit="return validateForm(event);"
@@ -206,6 +207,10 @@
                 value="C'est parti"
               />
             </form>
+            <div class="success-dialog" style="display: none;">
+              <p>Merci ! Votre réservation a bien été enregistrée.</p>
+              <input class="close-btn btn-submit" type="button" value="Fermer">
+            </div>
           </div>
         </div>
       </div>
