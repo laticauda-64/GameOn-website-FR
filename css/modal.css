@@ -1,3 +1,5 @@
+/* Default, variables & reset css */
+
 @font-face {
     font-family: 'DM Sans';
     src: url('../fonts/DM_Sans/DMSans-Regular.ttf');
@@ -13,13 +15,14 @@
     margin: 0;
     padding: 0;
 }
+
 /* Landing Page */
 
 body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    background-image: url('background.png');
+    /* background-image: url('background.png'); */
     font-family: var(--font-default);
     font-size: 18px;
     max-width: 1300px;
@@ -216,11 +219,6 @@ input {
     border: 2px solid #e54858;
 }
 
-/* input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 .checkbox-label,
 .checkbox2-label {
     position: relative;
@@ -294,6 +292,8 @@ input {
     opacity: 1;
     cursor: pointer;
     transform: scale(0.7);
+    border: none;
+    background: none;
 }
 .close:before,
 .close:after {
@@ -476,10 +476,6 @@ footer {
         float: none;
         margin-left: auto;
     }
-
-    /* i::before {
-        color: red;
-    } */
 
     .header-logo img {
         width: 103px;
