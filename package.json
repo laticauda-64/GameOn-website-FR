@@ -27,5 +27,8 @@
         "singleQuote": true,
         "printWidth": 250,
         "htmlWhitespaceSensitivity": "ignore"
+    },
+    "devDependencies": {
+        "prettier": "^2.4.1"
     }
 }
