@@ -29,9 +29,8 @@ body {
     margin: 0 auto;
 }
 
-p {
-    margin-bottom: 0;
-    padding: 0.5vw;
+fieldset {
+    border: none;
 }
 
 img {
@@ -161,7 +160,8 @@ main {
     background-color: rgba(26, 39, 156, 0.4);
 }
 
-.content {
+.register,
+.success-dialog {
     margin: 5% auto;
     width: 100%;
     max-width: 500px;
@@ -172,12 +172,7 @@ main {
     overflow: hidden;
     position: relative;
     color: #fff;
-    padding-top: 10px;
-}
-
-.modal-body {
-    padding: 15px 8%;
-    margin: 15px auto;
+    padding: 20px 40px;
 }
 
 label {
@@ -186,6 +181,8 @@ label {
     font-weight: normal;
     display: inline-block;
     margin-bottom: 11px;
+    word-spacing: 1px;
+    letter-spacing: -1px;
 }
 input {
     padding: 8px;
@@ -199,6 +196,9 @@ input {
     border-radius: 8px;
     font-size: 20px;
     height: 48px;
+}
+.formData {
+    margin-bottom: 10px;
 }
 .formData[data-error]::after {
     content: attr(data-error);
@@ -477,7 +477,7 @@ footer {
         margin-left: auto;
     }
 
-    .header-logo img {
+    .header-logo {
         width: 103px;
     }
 
@@ -588,4 +588,7 @@ footer {
     height: 710px;
     display: flex;
     align-items: center;
+}
+.success-dialog .close-btn {
+    margin-bottom: 20px;
 }
